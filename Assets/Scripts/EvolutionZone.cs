@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DezoomZone : MonoBehaviour {
+public class EvolutionZone : MonoBehaviour {
     #region Attributs publics
+    public float newPlayerSpeed = 1000f;
+    public float newPlayerJumpForce = 10f;
     public float newCameraSize = 7;
     public float dezoomSpeed = 10;
     #endregion
@@ -13,6 +15,7 @@ public class DezoomZone : MonoBehaviour {
     private bool isInDezoom = false;
     private float startTime;
     private float journeyLength;
+    private Player player;
     #endregion
 
     #region Méthodes privées
@@ -31,6 +34,8 @@ public class DezoomZone : MonoBehaviour {
 
     void OnTriggerEnter (Collider other) {
         if ("Player" == other.gameObject.tag) {
+            player.speed = newPlayerSpeed;
+            player.jumpForce = newPlayerJumpForce;
             startTime = Time.time;
             isInDezoom = true;
         }
@@ -40,6 +45,7 @@ public class DezoomZone : MonoBehaviour {
         startZoom = Camera.main.GetComponent<Camera> ().orthographicSize;
         endZoom = newCameraSize;
         journeyLength = Mathf.Abs(startZoom - endZoom);
+        player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
     }
     #endregion
 }

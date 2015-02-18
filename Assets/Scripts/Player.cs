@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
     #region Attributs publics
-    public float speed = 1000f;
-    public float jumpForce = 10f;
+    public float speed = 500f;
+    public float jumpForce = 5f;
     #endregion
 
     #region Attributs privés
