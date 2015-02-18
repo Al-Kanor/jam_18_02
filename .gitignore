@@ -17,4 +17,4 @@
 sysinfo.txt
 
 # Scene of Dante for avoid fucking merging
-/Assets/Scenes/Main.unity
+/Assets/Scenes/Main.unity*

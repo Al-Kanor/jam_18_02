@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MobileControlableBarrel : ControlableBarrel {
+public class MobileBarrel : Barrel {
     #region Attributs publics
     public float moveSpeed = 10f;
     public float stopDuration = 0.5f;
