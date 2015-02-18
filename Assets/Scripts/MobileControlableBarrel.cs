@@ -26,8 +26,9 @@ public class MobileControlableBarrel : ControlableBarrel {
 
             if (Vector3.Distance (transform.position, endPosition.position) < 0.01f) {
                 transform.position = endPosition.position;   // Clamp
+                Transform tmpPosition = endPosition;
                 endPosition = startPosition;
-                startPosition = transform;
+                startPosition = tmpPosition;
                 isStopped = true;
                 stopTimer = stopDuration;
             }
