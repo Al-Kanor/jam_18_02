@@ -18,6 +18,7 @@ public class MobileControlableBarrel : ControlableBarrel {
 
     #region Méthodes privées
     void FixedUpdate () {
+        base.FixedUpdate ();
         if (!isStopped) {
             float distCovered = (Time.time - startTime) * moveSpeed;
             float fracJourney = distCovered / journeyLength;
@@ -42,6 +43,7 @@ public class MobileControlableBarrel : ControlableBarrel {
     }
 
     void Start () {
+        base.Start ();
         journeyLength = Vector3.Distance (startPosition.position, endPosition.position);
         stopTimer = stopDuration;
     }

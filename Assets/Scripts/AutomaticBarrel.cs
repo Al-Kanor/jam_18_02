@@ -8,6 +8,7 @@ public class AutomaticBarrel : Barrel {
 
     #region Méthodes privées
     void FixedUpdate () {
+        base.FixedUpdate ();
         Vector3 move = Vector3.forward;
         move *= clockwiseDirection ? -1 : 1;
         rigidbody.transform.Rotate (move * turnSpeed * Time.fixedDeltaTime);

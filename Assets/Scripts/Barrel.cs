@@ -11,6 +11,7 @@ public class Barrel : MonoBehaviour {
 
     #region Attributs privés
     private float activeStrength = 0;
+    private Player player;
     #endregion
 
     #region Accesseurs
@@ -42,6 +43,18 @@ public class Barrel : MonoBehaviour {
             other.gameObject.transform.position = transform.position;   // Clamp
             other.gameObject.rigidbody.isKinematic = true;
         }
+    }
+    #endregion
+
+    #region Méthodes privées
+    protected void FixedUpdate () {
+        if (GameManager.ActionEnum.BARREL_MOVE == GameManager.instance.Action) {
+            player.transform.position = transform.position;
+        }
+    }
+
+    protected void Start () {
+        player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
     }
     #endregion
 }
