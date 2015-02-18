@@ -48,7 +48,7 @@ public class Barrel : MonoBehaviour {
 
     #region Méthodes privées
     protected void FixedUpdate () {
-        if (GameManager.ActionEnum.BARREL_MOVE == GameManager.instance.Action) {
+        if (GameManager.ActionEnum.BARREL_MOVE == GameManager.instance.Action && this == GameManager.instance.barrelInMovement) {
             player.transform.position = transform.position;
         }
     }
