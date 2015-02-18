@@ -5,7 +5,7 @@ public class IdleBarrel : Barrel {
     #region Méthodes privées
     void FixedUpdate () {
         base.FixedUpdate ();
-        if (GameManager.ActionEnum.BARREL_MOVE == GameManager.instance.Action && this == GameManager.instance.barrelInMovement) {
+        if (LevelManager.ActionEnum.BARREL_MOVE == LevelManager.instance.Action && this == LevelManager.instance.barrelInMovement) {
             float h = Input.GetAxis ("Mouse X");
             Vector3 move = new Vector3 (0f, 0f, -h);
             rigidbody.transform.Rotate (move * turnSpeed * Time.fixedDeltaTime);

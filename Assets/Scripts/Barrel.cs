@@ -38,8 +38,8 @@ public class Barrel : MonoBehaviour {
 
     void OnTriggerEnter (Collider other) {
         if ("Player" == other.gameObject.tag) {
-            GameManager.instance.Action = GameManager.ActionEnum.BARREL_MOVE;
-            GameManager.instance.barrelInMovement = this;
+            LevelManager.instance.Action = LevelManager.ActionEnum.BARREL_MOVE;
+            LevelManager.instance.barrelInMovement = this;
             other.gameObject.transform.position = transform.position;   // Clamp
             other.gameObject.rigidbody.isKinematic = true;
         }
@@ -48,7 +48,7 @@ public class Barrel : MonoBehaviour {
 
     #region Méthodes privées
     protected void FixedUpdate () {
-        if (GameManager.ActionEnum.BARREL_MOVE == GameManager.instance.Action && this == GameManager.instance.barrelInMovement) {
+        if (LevelManager.ActionEnum.BARREL_MOVE == LevelManager.instance.Action && this == LevelManager.instance.barrelInMovement) {
             player.transform.position = transform.position;
         }
     }
