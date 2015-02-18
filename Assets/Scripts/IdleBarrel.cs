@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ControlableBarrel : Barrel {
+public class IdleBarrel : Barrel {
     #region Méthodes privées
     void FixedUpdate () {
         base.FixedUpdate ();
