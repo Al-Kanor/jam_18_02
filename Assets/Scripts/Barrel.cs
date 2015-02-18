@@ -3,14 +3,15 @@ using System.Collections;
 
 public class Barrel : MonoBehaviour {
     #region Attributs publics
-    public float speed = 600f;
-    public float maxStrength = 1000f;
-    public float minStrength = 200f;
-    public float chargeSpeed = 1000f;
+    public float turnSpeed = 600f;
+    public float maxStrength = 100000f;
+    public float minStrength = 40000f;
+    public float chargeSpeed = 2000f;
     #endregion
 
     #region Attributs privés
     private float activeStrength = 0;
+    private Player player;
     #endregion
 
     #region Accesseurs
@@ -32,24 +33,28 @@ public class Barrel : MonoBehaviour {
     }
 
     #region Méthodes privées
-    void FixedUpdate () {
-        if (GameManager.ActionEnum.BARREL_MOVE == GameManager.instance.Action && this == GameManager.instance.barrelInMovement) {
-            float h = Input.GetAxis ("Mouse X");
-            Vector3 move = new Vector3 (0f, 0f, -h);
-            rigidbody.transform.Rotate (move * speed * Time.fixedDeltaTime);
-        }
-    }
+    
     #endregion
 
     void OnTriggerEnter (Collider other) {
         if ("Player" == other.gameObject.tag) {
-            GameManager.instance.Action = GameManager.ActionEnum.BARREL_MOVE;
-            GameManager.instance.barrelInMovement = this;
-            //Player player = other.gameObject.GetComponent<Player> ();
-
+            LevelManager.instance.Action = LevelManager.ActionEnum.BARREL_MOVE;
+            LevelManager.instance.barrelInMovement = this;
             other.gameObject.transform.position = transform.position;   // Clamp
             other.gameObject.rigidbody.isKinematic = true;
         }
+    }
+    #endregion
+
+    #region Méthodes privées
+    protected void FixedUpdate () {
+        if (LevelManager.ActionEnum.BARREL_MOVE == LevelManager.instance.Action && this == LevelManager.instance.barrelInMovement) {
+            player.transform.position = transform.position;
+        }
+    }
+
+    protected void Start () {
+        player = GameObject.FindGameObjectWithTag ("Player").GetComponent<Player> ();
     }
     #endregion
 }

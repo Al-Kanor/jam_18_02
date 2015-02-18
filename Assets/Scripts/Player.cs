@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
     #region Attributs publics
-    public float speed = 1000f;
-    public float jumpForce = 10f;
+    public float speed = 500f;
+    public float jumpForce = 5f;
     #endregion
 
     #region Attributs privés
@@ -20,14 +20,13 @@ public class Player : MonoBehaviour {
 
     #region Méthodes privées
     void FixedUpdate () {
-        if (GameManager.ActionEnum.PLAYER_MOVE == GameManager.instance.Action) {
+        if (LevelManager.ActionEnum.PLAYER_MOVE == LevelManager.instance.Action) {
             float h = Input.GetAxis ("Horizontal");
             float v = Input.GetAxis ("Vertical");
             Vector3 move = new Vector3 (h, 0f, v);
 
             if (Input.GetButtonDown ("Jump") && isGrounded) {
                 move.y = jumpForce;
-                isGrounded = false;
             }
 
             rigidbody.AddForce (move * speed * Time.deltaTime);

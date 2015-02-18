@@ -8,5 +8,11 @@ public class Ground : MonoBehaviour {
             other.gameObject.GetComponent<Player> ().IsGrounded = true;
         }
     }
+
+    void OnCollisionExit (Collision other) {
+        if ("Player" == other.gameObject.tag) {
+            other.gameObject.GetComponent<Player> ().IsGrounded = false;
+        }
+    }
     #endregion
 }
