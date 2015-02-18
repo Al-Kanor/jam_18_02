@@ -23,7 +23,12 @@ public class GameManager : MonoBehaviour {
         get { return action; }
         set {
             switch (value) {
-                
+                case ActionEnum.BARREL_MOVE:
+
+                    break;
+                case ActionEnum.PLAYER_MOVE:
+
+                    break;
             }
 
             action = value;
@@ -76,7 +81,7 @@ public class GameManager : MonoBehaviour {
                     // To the moon !
                     player.rigidbody.isKinematic = false;
                     barrelInMovement.Throw (player.rigidbody);
-                    action = ActionEnum.PLAYER_MOVE;
+                    Action = ActionEnum.PLAYER_MOVE;
                 }
                 break;
         }

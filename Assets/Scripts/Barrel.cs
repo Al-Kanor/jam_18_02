@@ -7,6 +7,7 @@ public class Barrel : MonoBehaviour {
     public float maxStrength = 1000f;
     public float minStrength = 200f;
     public float chargeSpeed = 1000f;
+    public GameObject GhostPrefab;
     #endregion
 
     #region Attributs privés

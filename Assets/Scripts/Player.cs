@@ -27,7 +27,6 @@ public class Player : MonoBehaviour {
 
             if (Input.GetButtonDown ("Jump") && isGrounded) {
                 move.y = jumpForce;
-                isGrounded = false;
             }
 
             rigidbody.AddForce (move * speed * Time.deltaTime);
