@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     #region Accesseurs
     
     #endregion
-
+    
     #region Singleton
     static GameManager m_instance;
     static public GameManager instance { get { return m_instance; } }
