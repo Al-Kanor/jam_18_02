@@ -25,9 +25,9 @@ public class MobileControlableBarrel : ControlableBarrel {
             transform.position = Vector3.Lerp (startPosition.position, endPosition.position, Mathf.SmoothStep (0, 1, fracJourney));
 
             if (Vector3.Distance (transform.position, endPosition.position) < 0.01f) {
-                Transform tmpPosition = startPosition;
-                startPosition = endPosition;
-                endPosition = tmpPosition;
+                transform.position = endPosition.position;   // Clamp
+                endPosition = startPosition;
+                startPosition = transform;
                 isStopped = true;
                 stopTimer = stopDuration;
             }
