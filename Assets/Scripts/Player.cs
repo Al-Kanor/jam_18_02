@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 
     #region Méthodes privées
     void FixedUpdate () {
-        if (GameManager.ActionEnum.PLAYER_MOVE == GameManager.instance.Action) {
+        if (LevelManager.ActionEnum.PLAYER_MOVE == LevelManager.instance.Action) {
             float h = Input.GetAxis ("Horizontal");
             float v = Input.GetAxis ("Vertical");
             Vector3 move = new Vector3 (h, 0f, v);
