@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
 
     #region Méthodes publiques
     public void GoToGame () {
+        SoundManager.instance.StopSound ("Main Menu");
+        SoundManager.instance.PlaySound ("World 1");
         Application.LoadLevel ("Main");
     }
 

@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
     #region Attributs publics
     public float speed = 500f;
     public float jumpForce = 5f;
+    public Sprite[] sprites;
     #endregion
 
     #region Attributs privés
@@ -15,6 +16,12 @@ public class Player : MonoBehaviour {
     public bool IsGrounded {
         get { return isGrounded; }
         set { isGrounded = value; }
+    }
+    #endregion
+
+    #region Méthodes publiques
+    public void UpdateSprite () {
+        transform.GetChild (1).GetComponent<SpriteRenderer> ().sprite = sprites[LevelManager.instance.level - 1];
     }
     #endregion
 

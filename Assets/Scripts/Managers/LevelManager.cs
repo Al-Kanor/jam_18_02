@@ -13,11 +13,12 @@ public class LevelManager : MonoBehaviour {
 
     #region Attributs publics
     public Barrel barrelInMovement = null;
+    public int level = 1;
+    public Player player;
     #endregion
 
     #region Attributs privés
     private ActionEnum action;
-    private Player player;
     #endregion
 
     #region Accesseurs

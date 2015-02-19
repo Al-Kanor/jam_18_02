@@ -20,6 +20,10 @@ public class Barrel : MonoBehaviour {
 
     #region Méthodes publiques
     public void ChargeStrength () {
+        if (activeStrength == 0) {
+            SoundManager.instance.PlaySound ("Charge");
+        }
+
         activeStrength = Mathf.Clamp (activeStrength + chargeSpeed, 0, maxStrength);
         GetComponent<MeshRenderer> ().material.color = Color.Lerp (Color.white, Color.red, activeStrength / maxStrength);
     }
@@ -30,6 +34,7 @@ public class Barrel : MonoBehaviour {
         _rigidbody.AddForce (transform.up * activeStrength * Time.deltaTime);
         activeStrength = 0;
         GetComponent<MeshRenderer> ().material.color = Color.white;
+        SoundManager.instance.PlaySound ("Shoot");
     }
 
     #region Méthodes privées
