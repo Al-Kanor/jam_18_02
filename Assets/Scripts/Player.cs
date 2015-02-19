@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
     #endregion
 
     #region Attributs privés
-    private bool isGrounded = true;
+    private bool isGrounded = false;
     #endregion
 
     #region Accesseurs

@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class LevelUpZone : MonoBehaviour {
+    public GameObject parallax;
+
     void OnTriggerEnter (Collider other) {
         if ("Player" == other.gameObject.tag) {
             LevelManager.instance.level++;
@@ -10,7 +12,8 @@ public class LevelUpZone : MonoBehaviour {
             LevelManager.instance.player.UpdateSprite ();
             SoundManager.instance.StopSound ("World " + (LevelManager.instance.level - 1));
             SoundManager.instance.PlaySound ("World " + LevelManager.instance.level);
-            GameObject.Destroy (gameObject);
+            parallax.SetActive (true);
+            GameObject.Destroy (this);
         }
     }
 }
